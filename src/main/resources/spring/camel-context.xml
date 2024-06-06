@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
-
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
-
-        <restConfiguration component="servlet" contextPath="/gesdoc" apiContextPath="/api-doc"
-                           apiContextRouteId="doc-api" enableCORS="true" scheme="http">
+    <camelContext id="camelContext-6514a134-2a6b-4617-92eb-ee00c39c50f6" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration apiContextPath="/api-doc"
+            apiContextRouteId="doc-api" component="servlet"
+            contextPath="/gesdoc" enableCORS="true" scheme="http">
             <apiProperty key="api.title" value="User Service"/>
             <apiProperty key="api.version" value="1.0"/>
             <apiProperty key="api.specification.contentType.json" value="application/vnd.oai.openapi+json;version=2.0"/>
@@ -28,22 +27,23 @@
             </get>
         </rest>
         -->
-
         <!-- User service -->
-        <rest path="/users" bindingMode="json" enableCORS="true">
-            
-            <post id="greet" consumes="application/json" produces="application/text" type="co.com.minvivienda.gesdoc.User" outType="java.lang.String">
-                
-                <responseMessage message="User added" code="200"/>
+        <rest bindingMode="json" enableCORS="true"
+            id="rest-d0f9dc18-89bc-453b-9b8a-eff9afb877e9" path="/users">
+            <description id="description-6bc80ccb-c5bb-4246-8edb-8283b13cc206">Users Service</description>
+            <post consumes="application/json" id="greet"
+                outType="java.lang.String" produces="application/text"
+                type="io.fabric8.quickstarts.camel.User" uri="greet">
+                <description>Greet this Service with User credentials</description>
+                <responseMessage code="200" message="User added"/>
                 <to uri="bean:userService?method=greetUser"/>
             </post>
-            <get id="list" produces="application/json" outType="co.com.minvivienda.gesdoc.User[]">
-                
-                <responseMessage message="All users successfully returned" code="200"/>
+            <get id="list" outType="io.fabric8.quickstarts.camel.User[]"
+                produces="application/json" uri="list">
+                <description>List users that used this service</description>
+                <responseMessage code="200" message="All users successfully returned"/>
                 <to uri="bean:userService?method=findUsers"/>
             </get>
         </rest>
-
     </camelContext>
-
 </beans>
