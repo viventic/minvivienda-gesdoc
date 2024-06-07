@@ -5,4 +5,4 @@ camel:
     servlet:
       mapping:
         enabled: true
-        context-path: /gesdoc/*
+        context-path: /minvivienda-gesdoc/*

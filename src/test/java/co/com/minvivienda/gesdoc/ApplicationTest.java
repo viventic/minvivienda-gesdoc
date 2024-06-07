@@ -46,13 +46,13 @@ public class ApplicationTest {
     public void newOrderTest() {
         // Register a new User CamelRest3Scale
         final User testUser = new User("appId", "appKey", "Test");
-        ResponseEntity<String> userResponse = restTemplate.postForEntity("/gesdoc/users/greet", testUser, String.class);
+        ResponseEntity<String> userResponse = restTemplate.postForEntity("/minvivienda-gesdoc/users/greet", testUser, String.class);
         assertThat(userResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         String greeting = userResponse.getBody();
         assertThat(greeting).isEqualTo("\"Hello Test\"");
 
         // List Users
-        ResponseEntity<List<User>> usersResponse = restTemplate.exchange("/gesdoc/users/list",
+        ResponseEntity<List<User>> usersResponse = restTemplate.exchange("/minvivienda-gesdoc/users/list",
             HttpMethod.GET, null, new ParameterizedTypeReference<List<User>>(){});
         assertThat(usersResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         List<User> users = usersResponse.getBody();

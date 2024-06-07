@@ -4,4 +4,4 @@ kind: Route
 spec:
   to:
     kind: Service
-    name: spring-boot-camel-rest-gesdoc
+    name: minvivienda-gesdoc

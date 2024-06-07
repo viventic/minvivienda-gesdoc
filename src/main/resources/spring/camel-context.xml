@@ -12,7 +12,7 @@
             <apiProperty key="cors" value="true"/>
         </restConfiguration>
         <!-- Override the default Camel Swagger doc with custom OpenAPI doc -->
-        <!--
+        <!-- 
         <rest path="/" enableCORS="true">
             <get id="openapi.json" produces="application/json" uri="openapi.json">
                 <description>Gets the openapi document for this service</description>
