@@ -33,12 +33,12 @@
             <description id="description-6bc80ccb-c5bb-4246-8edb-8283b13cc206">Users Service</description>
             <post consumes="application/json" id="greet"
                 outType="java.lang.String" produces="application/text"
-                type="io.fabric8.quickstarts.camel.User" uri="greet">
+                type="co.com.minvivienda.gesdoc.User" uri="greet">
                 <description>Greet this Service with User credentials</description>
                 <responseMessage code="200" message="User added"/>
                 <to uri="bean:userService?method=greetUser"/>
             </post>
-            <get id="list" outType="io.fabric8.quickstarts.camel.User[]"
+            <get id="list" outType="co.com.minvivienda.gesdoc.User[]"
                 produces="application/json" uri="list">
                 <description>List users that used this service</description>
                 <responseMessage code="200" message="All users successfully returned"/>
