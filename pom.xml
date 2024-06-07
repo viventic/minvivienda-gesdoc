@@ -21,7 +21,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>co.com.minvivienda.gesdoc</groupId>
-  <artifactId>spring-boot-camel-rest-gesdoc</artifactId>
+  <artifactId>minvivienda-gesdoc</artifactId>
   <version>1</version>
 
   <name>Minvivienda :: GESDOC</name>

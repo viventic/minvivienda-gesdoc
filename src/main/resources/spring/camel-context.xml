@@ -4,7 +4,7 @@
     <camelContext id="camelContext-6514a134-2a6b-4617-92eb-ee00c39c50f6" xmlns="http://camel.apache.org/schema/spring">
         <restConfiguration apiContextPath="/api-doc"
             apiContextRouteId="doc-api" component="servlet"
-            contextPath="/gesdoc" enableCORS="true" scheme="http">
+            contextPath="/minvivienda-gesdoc" enableCORS="true" scheme="http">
             <apiProperty key="api.title" value="User Service"/>
             <apiProperty key="api.version" value="1.0"/>
             <apiProperty key="api.specification.contentType.json" value="application/vnd.oai.openapi+json;version=2.0"/>
