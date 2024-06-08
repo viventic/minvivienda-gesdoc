@@ -1,8 +1,0 @@
-camel:
-  springboot:
-    name: CamelRestGesdoc
-  component:
-    servlet:
-      mapping:
-        enabled: true
-        context-path: /minvivienda-gesdoc/*
