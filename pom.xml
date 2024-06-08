@@ -19,10 +19,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-
+	
   <groupId>co.com.minvivienda.gesdoc</groupId>
   <artifactId>minvivienda-gesdoc</artifactId>
-  <version>1</version>
+  <version>1.0.0</version>
 
   <name>Minvivienda :: GESDOC</name>
   <description>Servicios web de GESDOC</description>
@@ -197,7 +197,7 @@
                                     </property>
                                     <property>
                                       <name>rht.comp</name>
-                                      <value>spring-boot-camel-rest-gesdoc</value>
+                                      <value>spring-boot-camel-rest-3scale</value>
                                     </property>
                                     <property>
                                       <name>rht.comp_ver</name>

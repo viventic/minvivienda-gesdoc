@@ -23,7 +23,7 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @ImportResource({"classpath:spring/camel-context.xml"})
 public class Application extends SpringBootServletInitializer {
-
+	
     public static void main(String[] args) {
     	//io.fabric8.quickstarts.camel
         SpringApplication.run(Application.class, args);

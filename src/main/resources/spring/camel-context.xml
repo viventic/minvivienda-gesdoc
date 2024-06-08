@@ -12,7 +12,7 @@
             <apiProperty key="cors" value="true"/>
         </restConfiguration>
         <!-- Override the default Camel Swagger doc with custom OpenAPI doc -->
-        <!-- 
+        <!-- camel-rest-3scale
         <rest path="/" enableCORS="true">
             <get id="openapi.json" produces="application/json" uri="openapi.json">
                 <description>Gets the openapi document for this service</description>
@@ -30,7 +30,7 @@
         <!-- User service -->
         <rest bindingMode="json" enableCORS="true"
             id="rest-d0f9dc18-89bc-453b-9b8a-eff9afb877e9" path="/users">
-            <description id="description-6bc80ccb-c5bb-4246-8edb-8283b13cc206">Users Service</description>
+            <description>Users Service</description>
             <post consumes="application/json" id="greet"
                 outType="java.lang.String" produces="application/text"
                 type="co.com.minvivienda.gesdoc.User" uri="greet">
