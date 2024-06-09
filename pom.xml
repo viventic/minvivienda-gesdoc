@@ -87,11 +87,6 @@
       <artifactId>httpclient</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-spark-rest</artifactId>
-    </dependency>
-
   </dependencies>
   <repositories>
     <repository>
