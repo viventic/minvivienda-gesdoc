@@ -22,7 +22,7 @@
             <setHeader headerName="Content-Type" id="contentType">
                 <constant>multipart/form-data</constant>
             </setHeader>
-            <to id="_to1" uri="http4://pruebas-gesdoc.minvivienda.gov.co:8443/SGD_WS/gesdoc/createReceived?bridgeEndpoint=true"/>
+            <to id="_to1" uri="http://pruebas-gesdoc.minvivienda.gov.co:8443/SGD_WS/gesdoc/createReceived?bridgeEndpoint=true"/>
             <log id="_log2" message="Response from external service: ${body}"/>
         </route>
     </camelContext>
