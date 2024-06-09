@@ -21,11 +21,11 @@
             <setHeader headerName="Content-Type" id="contentType">
                 <constant>multipart/form-data</constant>
             </setHeader>
-            <marshal id="_marshal1" ref="multipartDataFormat"/>
+    
             <to id="_to1" uri="https://pruebas-gesdoc.minvivienda.gov.co/SGD_WS/gesdoc/createReceived"/>
             <log id="_log1" message="Response from external service: ${body}"/>
         </route>
     </camelContext>
     
-    <bean class="org.apache.camel.dataformat.multipart.MultipartDataFormat" id="multipartDataFormat"/>
+    
 </beans>

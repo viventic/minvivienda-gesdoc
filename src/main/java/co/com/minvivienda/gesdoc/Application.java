@@ -20,6 +20,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ImportResource;
 
+
+
+
 @SpringBootApplication
 @ImportResource({"classpath:spring/camel-context.xml"})
 public class Application extends SpringBootServletInitializer {
