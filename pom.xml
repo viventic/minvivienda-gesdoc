@@ -35,16 +35,7 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spring-boot-starter</artifactId>
-    </dependency>
-    
-<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-management -->
-<dependency>
-    <groupId>org.apache.camel</groupId>
-    <artifactId>camel-management</artifactId>
-    <version>4.6.0</version>
-</dependency>
-
-    
+    </dependency>    
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -100,6 +91,7 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spark-rest</artifactId>
     </dependency>
+
   </dependencies>
   <repositories>
     <repository>
