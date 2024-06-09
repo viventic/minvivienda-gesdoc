@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
+    
+	<camelContext id="camelContext-4ed44f50-ec60-4612-835b-884342591458" xmlns="http://camel.apache.org/schema/spring">
+		
+		<jmxAgent id="agent" disabled="true"/>
 
-
+        <route id="myfirst_route">
+            <from id="_from1" uri="direct:start"/>
+            <setBody id="_setBody1">
+                <simple>Hola viventic</simple>
+            </setBody>
+            <to id="_to1" uri="direct:myfirstroute"/>
+        </route>
+        <route id="mysecond_route">
+            <from id="_from2" uri="direct:myfirstroute"/>
+            <log id="route-log" message=">> ${body}"/>
+        </route>
+    </camelContext>
 </beans>
