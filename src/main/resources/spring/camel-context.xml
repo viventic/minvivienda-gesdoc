@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
     <camelContext id="camelContext-4ed44f50-ec60-4612-835b-884342591458" xmlns="http://camel.apache.org/schema/spring">
-        <jmxAgent createConnector="true" disabled="false" id="agent"/>
+        <jmxAgent disabled="false" id="agent"/>
         <restConfiguration bindingMode="json" component="servlet" contextPath="/api"/>
         <rest consumes="multipart/form-data"
             id="rest-f68a5e39-393b-454e-87e4-0be267607723"
@@ -21,11 +21,8 @@
             <setHeader headerName="Content-Type" id="contentType">
                 <constant>multipart/form-data</constant>
             </setHeader>
-    
             <to id="_to1" uri="https://pruebas-gesdoc.minvivienda.gov.co/SGD_WS/gesdoc/createReceived"/>
             <log id="_log1" message="Response from external service: ${body}"/>
         </route>
     </camelContext>
-    
-    
 </beans>
