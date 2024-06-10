@@ -22,8 +22,13 @@
         <route id="createReceived">
             <from id="_from1" uri="direct:createReceived"/>
             <log id="_log1" message="Cuerpo de la peticion: ${body}"/>
-			<removeHeaders pattern="CamelHttp*"></removeHeaders>
-            <to id="_to1" uri="https://pruebas-gesdoc.minvivienda.gov.co/SGD_WS/gesdoc/createReceived?appkey=nXSw%2BspZBJdPbAZSqnzkF4oMWy4Cmv7cj5Ni0NAAM%2B4%3D&amp;bridgeEndpoint=true"/>
+			<setHeader headerName="CamelHttpMethod" id="httpMethod">
+                <constant>POST</constant>
+            </setHeader>
+            <setHeader headerName="Content-Type" id="contentType">
+                <constant>multipart/form-data</constant>
+            </setHeader>
+			<to id="_to1" uri="https://pruebas-gesdoc.minvivienda.gov.co/SGD_WS/gesdoc/createReceived?appkey=nXSw%2BspZBJdPbAZSqnzkF4oMWy4Cmv7cj5Ni0NAAM%2B4%3D&amp;bridgeEndpoint=true"/>
             <choice id="_choice1">
                 <when id="_when1">
                     <simple>${header.CamelHttpResponseCode} == 200</simple>
