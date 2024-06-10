@@ -32,7 +32,7 @@
  			<setHeader headerName="appkey">
             	<simple>nXSw%2BspZBJdPbAZSqnzkF4oMWy4Cmv7cj5Ni0NAAM%2B4%3D</simple>
         	</setHeader>
-			<to id="_to1" uri="https://pruebas-gesdoc.minvivienda.gov.co/SGD_WS/gesdoc/createReceived?appkey=${header.appkey}&bridgeEndpoint=true"/>
+			<to id="_to1" uri="https://pruebas-gesdoc.minvivienda.gov.co/SGD_WS/gesdoc/createReceived?appkey=${header.appkey}&amp;bridgeEndpoint=true&amp;throwExceptionOnFailure=false"/>
             <choice id="_choice1">
                 <when id="_when1">
                     <simple>${header.CamelHttpResponseCode} == 200</simple>
