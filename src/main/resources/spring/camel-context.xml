@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
-	<camelContext id="camelContext-4ed44f50-ec60-4612-835b-884342591458" xmlns="http://camel.apache.org/schema/spring">
-		
-		<restConfiguration apiContextPath="/api-doc" 
-			apiContextRouteId="doc-api" component="servlet"
-			contextPath="/minvivienda-gesdoc" enableCORS="true" scheme="http">
-            <apiProperty key="api.title" value="User Service"/>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
+    <camelContext id="camelContext-4ed44f50-ec60-4612-835b-884342591458" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration apiContextPath="/api-doc"
+            apiContextRouteId="doc-api" component="servlet"
+            contextPath="/minvivienda-gesdoc" enableCORS="true" scheme="http">
+            <apiProperty key="api.title" value="Gesdoc Services"/>
             <apiProperty key="api.version" value="1.0"/>
             <apiProperty key="api.specification.contentType.json" value="application/vnd.oai.openapi+json;version=2.0"/>
             <apiProperty key="api.specification.contentType.yaml" value="application/vnd.oai.openapi;version=2.0"/>
             <apiProperty key="cors" value="true"/>
-		</restConfiguration>
-		
-		<rest path="/gesdoc" bindingMode="off" enableCORS="true">
-			<post uri="/createReceived" id="createReceived" produces="multipart/form-data" consumes="multipart/form-data">
-				<to uri="direct:createReceived" />
-				
-			</post>
-		</rest>
-		
-		<route id="createReceived">
-			<from id="_from1" uri="direct:createReceived" />
-			<log id="_log1" message="Cuerpo de la peticion: ${body}" />	
-			<log id="_log2" message="Response from external service: ${body}" />
-		</route>
-	</camelContext>
+        </restConfiguration>
+        <rest bindingMode="off" enableCORS="true"
+            id="rest-9d49aba4-0c2c-42e4-a60b-d17539587133" path="/">
+            <post consumes="multipart/form-data" id="createReceived"
+                produces="multipart/form-data" uri="/createReceived">
+                <to uri="direct:createReceived"/>
+            </post>
+        </rest>
+        <route id="createReceived">
+            <from id="_from1" uri="direct:createReceived"/>
+            <log id="_log1" message="Cuerpo de la peticion: ${body}"/>
+            <setHeader headerName="CamelHttpMethod" id="httpMethod">
+                <constant>POST</constant>
+            </setHeader>
+            <setHeader headerName="Content-Type" id="contentType">
+                <constant>multipart/form-data</constant>
+            </setHeader>
+            <to id="_to1" uri="http://pruebas-gesdoc.minvivienda.gov.co:8443/SGD_WS/gesdoc/createReceived?bridgeEndpoint=true"/>
+            <log id="_log2" message="Response from external service: ${body}"/>
+        </route>
+    </camelContext>
 </beans>
