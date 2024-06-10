@@ -22,13 +22,6 @@
         <route id="createReceived">
             <from id="_from1" uri="direct:createReceived"/>
             <log id="_log1" message="Cuerpo de la peticion: ${body}"/>
- 			<removeHeaders pattern="CamelHttp*"/>
-			<setHeader headerName="CamelHttpMethod" id="httpMethod">
-                <constant>POST</constant>
-            </setHeader>
-            <setHeader headerName="Content-Type" id="contentType">
-                <constant>multipart/form-data</constant>
-            </setHeader>
  			<setHeader headerName="appkey">
             	<simple>nXSw%2BspZBJdPbAZSqnzkF4oMWy4Cmv7cj5Ni0NAAM%2B4%3D</simple>
         	</setHeader>
