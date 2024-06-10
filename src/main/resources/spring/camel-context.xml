@@ -7,21 +7,19 @@
         <rest consumes="multipart/form-data"
             id="rest-f68a5e39-393b-454e-87e4-0be267607723"
             path="/gesdoc" produces="multipart/form-data">
-            <post id="post-b8085bd9-1802-4cd4-929f-51912710971c" uri="createReceived">
-                <route>
-                    <to uri="direct:createReceived"/>
-                </route>
+            <post id="post-b8085bd9-1802-4cd4-929f-51912710971c" uri="/createReceived">
+                <to uri="direct:createReceived"/>
             </post>
         </rest>
         <route id="createReceived">
             <from id="_from1" uri="direct:createReceived"/>
-			<log id="_log1" message="Cuerpo de la peticion: ${body}"/>
+            <log id="_log1" message="Cuerpo de la peticion: ${body}"/>
             <setHeader headerName="CamelHttpMethod" id="httpMethod">
                 <constant>POST</constant>
             </setHeader>
             <setHeader headerName="Content-Type" id="contentType">
                 <constant>multipart/form-data</constant>
-            </setHeader> 
+            </setHeader>
             <to id="_to1" uri="http://pruebas-gesdoc.minvivienda.gov.co:8443/SGD_WS/gesdoc/createReceived?bridgeEndpoint=true"/>
             <log id="_log2" message="Response from external service: ${body}"/>
         </route>
