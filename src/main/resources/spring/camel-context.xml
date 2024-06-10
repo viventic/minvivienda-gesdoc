@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
-    <camelContext id="camelContext-4ed44f50-ec60-4612-835b-884342591458" xmlns="http://camel.apache.org/schema/spring">
-        <jmxAgent disabled="false" id="agent"/>
-        <restConfiguration bindingMode="json" component="servlet" contextPath="/api"/>
-        <rest consumes="multipart/form-data"
-            id="rest-f68a5e39-393b-454e-87e4-0be267607723"
-            path="/gesdoc" produces="multipart/form-data">
-            <post id="post-b8085bd9-1802-4cd4-929f-51912710971c" uri="/createReceived">
-                <to uri="direct:createReceived"/>
-            </post>
-        </rest>
-        <route id="createReceived">
-            <from id="_from1" uri="direct:createReceived"/>
-            <log id="_log1" message="Cuerpo de la peticion: ${body}"/>
-            <setHeader headerName="CamelHttpMethod" id="httpMethod">
-                <constant>POST</constant>
-            </setHeader>
-            <setHeader headerName="Content-Type" id="contentType">
-                <constant>multipart/form-data</constant>
-            </setHeader>
-            <to id="_to1" uri="http://pruebas-gesdoc.minvivienda.gov.co:8443/SGD_WS/gesdoc/createReceived?bridgeEndpoint=true"/>
-            <log id="_log2" message="Response from external service: ${body}"/>
-        </route>
-    </camelContext>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring-2.23.3.xsd">
+	<camelContext id="camelContext-4ed44f50-ec60-4612-835b-884342591458" xmlns="http://camel.apache.org/schema/spring">
+		
+		<restConfiguration apiContextPath="/api-doc" apiContextRouteId="doc-api" bindingMode="json" component="servlet" contextPath="/api" enableCORS="true" scheme="http">
+            <apiProperty key="cors" value="true"/>
+            <apiProperty key="api.title" value="My First Camel API Lab"/>
+            <apiProperty key="api.version" value="1.0.0"/>
+		</restConfiguration>
+		
+		<rest path="/gesdoc" >
+			<post uri="/createReceived">
+				<to uri="direct:createReceived" />
+				
+			</post>
+		</rest>
+		
+		<route id="createReceived">
+			<from id="_from1" uri="direct:createReceived" />
+			<log id="_log1" message="Cuerpo de la peticion: ${body}" />	
+			<log id="_log2" message="Response from external service: ${body}" />
+		</route>
+	</camelContext>
 </beans>
