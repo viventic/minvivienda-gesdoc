@@ -12,8 +12,8 @@
             <apiProperty key="cors" value="true"/>
 		</restConfiguration>
 		
-		<rest path="/gesdoc" bindingMode="json" enableCORS="true">
-			<post uri="/createReceived" id="createReceived">
+		<rest path="/gesdoc" bindingMode="off" enableCORS="true">
+			<post uri="/createReceived" id="createReceived" produces="multipart/form-data" consumes="multipart/form-data">
 				<to uri="direct:createReceived" />
 				
 			</post>
